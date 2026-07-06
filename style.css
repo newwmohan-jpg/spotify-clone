@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: black;
+}
+.nav ul .left{
+    display: flex;
+    justify-content: flex-start;
+
+}
+img #Logo{
+    width: 30px;
+    
+}
