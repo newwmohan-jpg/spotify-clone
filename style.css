@@ -292,7 +292,7 @@ padding: 0px 15px;
     object-fit: cover;
    flex-shrink: 0;
     padding: 10px 10px;
-    border-radius: 150px;
+    border-radius: 200px;
   
 
 }
@@ -361,7 +361,7 @@ padding: 0px 15px;
     justify-content: center;
     padding: 10px;
     margin-top: auto;
-    display: none; /*hidden play btn*/
+    /* display: none; hidden play btn */
 
 }
 .btns{
