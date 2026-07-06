@@ -1,4 +1,4 @@
-async function getSongs() {
+async function Songs() {
     let a = await fetch("http://127.0.0.1:3000/songs/")
     let response = await a.text();
     let div = document.createElement("div")
@@ -14,7 +14,10 @@ async function getSongs() {
     }
     return songs;
 }
+async function main() {
 
-let songs = getSongs();
-console.log(songs);
+    let songs = await Songs();
+    console.log(songs);
 
+}
+main()
