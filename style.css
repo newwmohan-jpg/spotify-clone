@@ -1,16 +1,180 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-body{
+
+body {
     background-color: black;
 }
-.nav ul .left{
+
+/* styling nav */
+.nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    list-style: none;
+}
+
+.nav ul .left {
     display: flex;
     justify-content: flex-start;
 
 }
-img #Logo{
-    width: 30px;
-    
+
+.nav ul .centre {
+    display: flex;
+    align-items: center;
+
+}
+
+.nav ul .right {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.right a {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: right;
+    color: white;
+    text-decoration: none;
+
+}
+
+#Logo {
+    width: 40px;
+
+}
+
+#homeBtn {
+    width: 40px;
+    background-color:rgb(31, 31, 31);
+    padding: 5px;
+    border-radius: 30px;
+    margin-right: 20px;
+}
+
+form input {
+    height: 50px;
+    width: 20vw;
+    padding: 0 30px;
+    border: none;
+    border-radius: 30px;
+    background-color: rgb(31, 31, 31);
+}
+
+#loginBtn {
+    height: 50px;
+    width: 100px;
+    border: none;
+    border-radius: 30px;
+}
+
+#divider {
+    height: 30px;
+    width: 10px;
+}
+
+#insApp {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#signUp {
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+/* styling left box */
+
+.box1 {
+    margin: 20px;
+    padding: 20px;
+    color: white;
+    width: 18vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(18, 18, 18);
+    border-radius: 15px;
+    gap: 50px;
+}
+
+.line1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.childBox11{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    font-family: sans-serif;
+    gap: 10px;
+    background-color: rgb(31, 31, 31) ;
+    padding: 20px 20px;
+    border-radius: 10px;
+}
+.childBox12{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 10px;
+    background-color: rgb(31, 31, 31) ;
+    padding: 20px 20px;
+    border-radius: 10px;
+    font-family: sans-serif;
+}
+#crt_Ply , #brs_Pod{
+    width: 130px;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    font-weight: bolder;
+}
+#crt{
+    background-color: rgb(31, 31, 31);
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 20px;
+}
+.childBox11 p , .childBox12 p {
+    color: rgb(129, 129, 129);
+}
+.links{
+    margin-top: 50vh;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+.links a{
+    color:rgb(139, 139, 139) ;
+    text-decoration: none;
+    font-size: 12px;
+    font-family: sans-serif;
+}
+.links .white{
+    color:rgb(232, 232, 232);
+}
+.lang button img{
+    width: 25px;
+}
+.lang button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    color: whitesmoke;
+    padding: 6px;
+    width: 100px;
+    border: 1px solid white;
+    border-radius: 20px;
 }
