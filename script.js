@@ -1,3 +1,4 @@
+
 async function Songs() {
     let a = await fetch("http://127.0.0.1:3000/songs/")
     let response = await a.text();
@@ -10,93 +11,75 @@ async function Songs() {
         if (element.href.endsWith(".mp3")) {
             songs.push(element.href)
         }
+
     }
-    return songs;
+    return songs
 }
 
-function extractWords(text) {
-    return decodeURIComponent(text)
-        .toLowerCase()
-        .replace(/\.[a-z0-9]+$/i, "")
-        .split(/[\s_\-\/]+/)
-        .filter(Boolean);
-}
 
-function findBestSong(title, songUrls) {
-    const titleWords = extractWords(title);
-    let bestUrl = null;
-    let bestScore = 0;
 
-    for (const url of songUrls) {
-        const filename = url.substring(url.lastIndexOf("/") + 1);
-        const fileWords = new Set(extractWords(filename));
-        const score = titleWords.filter(w => fileWords.has(w)).length;
-        if (score > bestScore) {
-            bestScore = score;
-            bestUrl = url;
-        }
-    }
-    return bestUrl;
-}
-
-let card = document.querySelectorAll(".song");
-let playbtn = document.querySelector("#plays");
-let currsong = new Audio();
+let currSong = new Audio();
 let isplaying = false;
-let allSongs = [];
-let playBar = document.querySelector(".hiddenPlay")
-
-async function init() {
-    allSongs = await Songs();
-}
-init();
-
-function pauseSong() {
-    currsong.pause();
-    isplaying = false;
-    playbtn.src = "play.png";
-}
-function playSong() {
-    currsong.play();
+let playBar = document.querySelector(".hiddenPlay");
+function play() {
+    currSong.play();
     isplaying = true;
-    playbtn.src = "icons8-pause-50.png";
+    playBar.style.display = "contents";
+    plays.src = "icons8-pause-50.png";
 }
+function pause() {
+    currSong.pause();
+    isplaying = false;
+    plays.src = "play.png";
+}
+let indexes = 0;
+let card = document.querySelectorAll(".poster");
+card.forEach((element, index) => {
+    element.addEventListener("click", async () => {
+        let Allsong = await Songs()
 
-card.forEach(e => {
-    e.addEventListener("click", () => {
-        let title = e.querySelector(".title");
-        let matchedUrl = findBestSong(title.innerHTML, allSongs);
-        
-        if (!matchedUrl) {
-            console.warn("No matching song found for:", title.innerHTML);
-            return;
+        if (isplaying) {
+            pause();
         }
-
-        if (currsong.src === matchedUrl && isplaying) {
-            pauseSong();
-
-        } else {
-            playBar.style.display = "contents";
-            currsong.src = matchedUrl;
-            playSong();
-
+        else {
+            currSong.src = Allsong[index];
+            play();
         }
+        indexes = index;
 
-    });
+    })
 });
-
 plays.addEventListener("click", () => {
     if (isplaying) {
-       pauseSong();
-
+        pause();
     }
     else {
-        playSong();
+        play();
     }
 })
 
-// next.addEventListener("click",()=>{
-  
-// currsong = 
-    
-// })
+next.addEventListener("click", async () => {
+    let Allsong = await Songs();
+    if (indexes < card.length()) {
+        currSong.src = Allsong[indexes + 1];
+        play();
+        indexes++;
+    }
+    else {
+        indexes = 0;
+        currSong.src = Allsong[indexes];
+        play();
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
