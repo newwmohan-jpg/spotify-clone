@@ -34,21 +34,37 @@ function pause() {
 }
 let indexes = 0;
 let card = document.querySelectorAll(".poster");
+let allSongs = [];
+
+
 card.forEach((element, index) => {
     element.addEventListener("click", async () => {
-        let Allsong = await Songs()
+        allSongs = await Songs();
+        let songName = element.dataset.song;
 
-        if (isplaying) {
-            pause();
+        let matchedSrc = allSongs.find(url => decodeURIComponent(url).endsWith(songName));
+
+
+        if (!matchedSrc) {
+            console.warn("No match found for:", songName);
+            return;
         }
-        else {
-            currSong.src = Allsong[index];
+
+        if (indexes == index && isplaying) {
+            pause();
+        } else {
+            currSong.src = matchedSrc;
             play();
         }
         indexes = index;
-
-    })
+    });
 });
+
+
+// window.addEventListener("DOMContentLoaded", async () => {
+//     allSongs = await Songs();
+// });
+
 plays.addEventListener("click", () => {
     if (isplaying) {
         pause();
@@ -60,13 +76,27 @@ plays.addEventListener("click", () => {
 
 next.addEventListener("click", async () => {
     let Allsong = await Songs();
-    if (indexes < card.length()) {
+    if (indexes < card.length - 1) {
         currSong.src = Allsong[indexes + 1];
         play();
         indexes++;
     }
     else {
         indexes = 0;
+        currSong.src = Allsong[indexes];
+        play();
+    }
+})
+
+prev.addEventListener("click", async () => {
+    let Allsong = await Songs();
+    if (indexes > 0) {
+        currSong.src = Allsong[indexes - 1];
+        play();
+        indexes--;
+    }
+    else {
+        indexes = card.length - 1;
         currSong.src = Allsong[indexes];
         play();
     }
