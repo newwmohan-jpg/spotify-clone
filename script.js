@@ -17,15 +17,17 @@ async function Songs() {
 }
 
 
-
+let songName = "";
 let currSong = new Audio();
 let isplaying = false;
 let playBar = document.querySelector(".hiddenPlay");
 function play() {
     currSong.play();
     isplaying = true;
-    playBar.style.display = "contents";
+    playBar.style.display = "block";
     plays.src = "icons8-pause-50.png";
+    // sName.innerText = songName.slice(0,-4);
+    // aName.innerText = 
 }
 function pause() {
     currSong.pause();
@@ -40,7 +42,7 @@ let allSongs = [];
 card.forEach((element, index) => {
     element.addEventListener("click", async () => {
         allSongs = await Songs();
-        let songName = element.dataset.song;
+        songName = element.dataset.song;
 
         let matchedSrc = allSongs.find(url => decodeURIComponent(url).endsWith(songName));
 
@@ -54,6 +56,8 @@ card.forEach((element, index) => {
             pause();
         } else {
             currSong.src = matchedSrc;
+            sName.innerText = songName.slice(0, -4);
+            aName.innerText = element.querySelector(".credits").innerText;
             play();
         }
         indexes = index;
@@ -61,9 +65,7 @@ card.forEach((element, index) => {
 });
 
 
-// window.addEventListener("DOMContentLoaded", async () => {
-//     allSongs = await Songs();
-// });
+
 
 plays.addEventListener("click", () => {
     if (isplaying) {
@@ -78,6 +80,17 @@ next.addEventListener("click", async () => {
     let Allsong = await Songs();
     if (indexes < card.length - 1) {
         currSong.src = Allsong[indexes + 1];
+        let songUrl = currSong.src;
+        songName = (songUrl.replaceAll("%20", " ")).split('/').pop();
+
+        sName.innerText = songName.slice(0, -4);
+        card.forEach(element => {
+            if (sName.innerText == element.querySelector(".title").innerText) {
+                aName.innerText = element.querySelector(".credits").innerText;
+            }
+
+        });
+
         play();
         indexes++;
     }
