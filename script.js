@@ -105,6 +105,16 @@ prev.addEventListener("click", async () => {
     let Allsong = await Songs();
     if (indexes > 0) {
         currSong.src = Allsong[indexes - 1];
+          let songUrl = currSong.src;
+        songName = (songUrl.replaceAll("%20", " ")).split('/').pop();
+
+        sName.innerText = songName.slice(0, -4);
+        card.forEach(element => {
+            if (sName.innerText == element.querySelector(".title").innerText) {
+                aName.innerText = element.querySelector(".credits").innerText;
+            }
+
+        });
         play();
         indexes--;
     }
@@ -115,6 +125,36 @@ prev.addEventListener("click", async () => {
     }
 })
 
+let currentTimeEl = document.getElementById("currentTime");
+let totalDurationEl = document.getElementById("totalDuration");
+let seekbar = document.getElementById("seekbar");
+
+function formatTime(seconds) {
+    if (isNaN(seconds)) return "0:00";
+    let min = Math.floor(seconds / 60);
+    let sec = Math.floor(seconds % 60);
+    return `${min}:${sec < 10 ? "0" + sec : sec}`;
+}
+
+currSong.addEventListener("loadedmetadata", () => {
+    totalDurationEl.innerText = formatTime(currSong.duration);
+    seekbar.max = currSong.duration;
+});
+
+currSong.addEventListener("timeupdate", () => {
+    currentTimeEl.innerText = formatTime(currSong.currentTime);
+    seekbar.value = currSong.currentTime;
+});
+
+seekbar.addEventListener("input", () => {
+    currSong.currentTime = seekbar.value;
+});
+const menuBtn = document.getElementById("menuBtn");
+const box1 = document.querySelector(".box1");
+
+menuBtn.addEventListener("click", () => {
+    box1.classList.toggle("open");
+});
 
 
 

@@ -13,6 +13,7 @@
         <div class="nav">
             <ul>
                 <div class="left">
+                    <button id="menuBtn" class="menu-btn">☰</button>
                     <li><img id="Logo" src="spotify_logo.png" alt="spotify logo"></li>
                 </div>
                 <div class="centre">
@@ -82,8 +83,6 @@
                         <a class="title" href="">KALYANI_Remix</a>
                         <div class="credits">
                             <a href="">ARJN,</a>
-                            <a href="">KDS,</a>
-                            <a href="">FIFTY4,</a>
                             <a href="">Shreya Ghoshal</a>
                         </div>
                     </div>
@@ -179,33 +178,15 @@
                     </div>
                 </div>
             </div>
-            <div class="line1">
-                <b>Popular artists</b>
-                <a href="">show all</a>
-            </div>
-            <div class="PopularArtists">
+            <div class="foot">
 
-
-                <div class="Artists">
-                    <img src="posters/Screenshot 2026-07-06 at 11.01.49 PM.png" alt="">
-                    <a class="titleA" href="">Mohan</a>
-                    <a href="">Artist</a>
-                </div>
-
-                <div class="Artists">
-                    <img src="posters/images.webp" alt="">
-                    <a class="titleA" href="">Shreya Ghoshal</a>
-                    <a href="">Artist</a>
-                </div>
-
-
-
-            </div>
-<div class="foot">
-    
                 <div class="hiddenPlay">
-    
+                    <div class="seek">
+                        <input type="range" id="seekbar" value="0" min="0" max="100" step="1">
+                        <span id="totalDuration">0:00</span>
+                    </div>
                     <div class="playBar">
+
                         <div class="songInfo">
                             <b id="sName">Song Name</b>
                             <p id="aName">Artist Name</p>
@@ -216,14 +197,20 @@
                             <img id="next" src="right.png" alt="">
                         </div>
                         <div class="songtime">
-                            <b>00/00</b>
+                            <span id="currentTime">0:00</span>
                         </div>
+
                     </div>
+
                 </div>
-    
-                <hr id="hr1">
+            </div>
+            <div class="footers">
+
+                <div class="hr">
+                    <hr id="hr1">
+                </div>
+
                 <div class="grid">
-    
                     <div class="grid1">
                         <b>Company</b>
                         <a href="">About</a><a href="">Jobs</a><a href="">For the Record</a>
@@ -240,18 +227,20 @@
                     </div>
                     <div class="grid1">
                         <b>Spotify Plans</b>
-                        <a href="">Premium Standard</a><a href="">Premium Platinum</a><a href="">Premium student</a><a
-                            href="">Spotify Free</a>
+                        <a href="">Premium Standard</a><a href="">Premium Platinum</a><a href="">Premium
+                            student</a><a href="">Spotify Free</a>
                     </div>
                     <div class="socials">
                         <img src="instalogo.png" alt="">
                         <img src="Xlogo.png" alt="">
                         <img src="facebook.png" alt="">
                     </div>
-    
+
                 </div>
-</div>
-            <hr>
+                <div class="hr">
+                    <hr>
+                </div>
+            </div>
         </div>
         </div>
 
