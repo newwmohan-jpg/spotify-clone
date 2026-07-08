@@ -25,14 +25,14 @@ function play() {
     currSong.play();
     isplaying = true;
     playBar.style.display = "block";
-    plays.src = "icons8-pause-50.png";
+    plays.src = "icons/icons8-pause-50.png";
     // sName.innerText = songName.slice(0,-4);
     // aName.innerText = 
 }
 function pause() {
     currSong.pause();
     isplaying = false;
-    plays.src = "play.png";
+    plays.src = "icons/play.png";
 }
 let indexes = 0;
 let card = document.querySelectorAll(".poster");
