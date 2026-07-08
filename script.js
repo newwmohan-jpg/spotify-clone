@@ -1,6 +1,6 @@
 
 async function Songs() {
-    let a = await fetch("songs")
+    let a = await fetch("songs/songs.json")
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
